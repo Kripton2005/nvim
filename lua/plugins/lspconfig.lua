@@ -27,23 +27,31 @@ return {
       ---@diagnostic disable-next-line: inject-field
       capabilities.offsetEncoding = { "utf-16" }
 
-      local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
-      vim.env.PATH = mason_bin .. ":" .. vim.env.PATH
+      -- 1. FIX: Shim the missing Neovim handler for Pyright
+      vim.lsp.handlers["workspace/diagnostic/refresh"] = function(_, _, ctx)
+        return true
+      end
 
       vim.lsp.enable('asm_lsp')
       vim.lsp.enable('rust_analyzer')
 
-      local venv_path = vim.fn.expand("~") .. "/work_env"
+      local home = vim.fn.expand("~")
+      local venv_path = home .. "/work_env"
 
-      vim.lsp.enable('pyright', {
+      vim.lsp.config('pyright', {
+        capabilities = capabilities,
+        cmd = { venv_path .. "/bin/pyright-langserver", "--stdio" },
         settings = {
           python = {
             pythonPath = venv_path .. "/bin/python",
-            venvPath = vim.fn.expand("~"),
-            venv = "work_env"
+            analysis = {
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+            }
           }
         }
       })
+      vim.lsp.enable('pyright')
 
       vim.lsp.config('lua_ls', {
         settings = {
