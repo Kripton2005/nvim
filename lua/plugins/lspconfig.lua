@@ -74,6 +74,7 @@ return {
           "clangd",
           "--background-index",
           "--clang-tidy",
+          "--query-driver=/usr/bin/g++",
           "--header-insertion=never",
           "--completion-style=detailed",
           "--function-arg-placeholders=0",
