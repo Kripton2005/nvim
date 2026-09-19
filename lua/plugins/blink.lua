@@ -2,17 +2,17 @@ return {
   {
     'saghen/blink.cmp',
     dependencies = 'rafamadriz/friendly-snippets', -- Optional: for code snippets
-    version = '*', -- Use a release tag for stability
+    version = '*',                                 -- Use a release tag for stability
 
     ---@module 'blink.cmp'
     opts = {
       -- 'default' for 0.11+ looks, 'super-tab' for those used to VSCode/Tab
       keymap = {
-        preset = 'super-tab' ,
+        preset = 'super-tab',
         ['<Esc>'] = { 'hide', 'fallback' },
         -- ['<Tab>'] = { 'select_and_accept', 'snippet_forward', 'fallback' },
-        ['<Up>'] = {'fallback'},
-        ['<Down>'] = {'fallback'},
+        ['<Up>'] = { 'fallback' },
+        ['<Down>'] = { 'fallback' },
       },
 
       appearance = {

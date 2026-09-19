@@ -7,9 +7,9 @@ return {
     local persisted = require("persisted")
 
     persisted.setup({
-      autostart = true, -- Automatically start session tracking
-      autosave = true, -- Save session when exiting Neovim
-      autoload = false, -- We use Telescope to load sessions manually
+      autostart = true,      -- Automatically start session tracking
+      autosave = true,       -- Save session when exiting Neovim
+      autoload = false,      -- We use Telescope to load sessions manually
       use_git_branch = true, -- Separate sessions by git branch
       save_dir = vim.fn.expand(vim.fn.stdpath("data") .. "/sessions/"),
       options = {
@@ -59,6 +59,6 @@ return {
   end,
   keys = {
     { "<leader>qs", "<cmd>Telescope persisted<cr>", desc = "Search Sessions" },
-    { "<leader>qc", "<cmd>PersistedClose<cr>", desc = "Close Session" },
+    { "<leader>qc", "<cmd>PersistedClose<cr>",      desc = "Close Session" },
   },
 }

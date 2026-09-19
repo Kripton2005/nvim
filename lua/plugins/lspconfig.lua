@@ -33,7 +33,8 @@ return {
       end
 
       vim.lsp.enable('asm_lsp')
-      vim.lsp.enable('rust_analyzer')
+      vim.lsp.enable('gdscript')
+      vim.lsp.enable('glsl_analyzer')
 
       local home = vim.fn.expand("~")
       local venv_path = home .. "/work_env"
@@ -101,7 +102,6 @@ return {
           }
         }
       })
-
       vim.lsp.enable('r_language_server')
 
       -- TexLab Configuration
@@ -126,6 +126,17 @@ return {
         },
       })
       vim.lsp.enable('texlab')
+
+      vim.lsp.config('rust_analyzer', {
+        settings = {
+          ["rust-analyzer"] = {
+            cargo = {
+              allFeatures = true,
+            },
+          },
+        },
+      })
+      vim.lsp.enable('rust_analyzer')
     end
   }
 }

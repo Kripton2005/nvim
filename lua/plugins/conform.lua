@@ -5,15 +5,16 @@ return {
       cpp = { "clang-format" },
       c = { "clang-format" },
       cuda = { "clang-format" },
+      rust = { "rustfmt" },
     },
     formatters = {
       ["clang-format"] = {
-        -- This tells clang-format to use 4 spaces if no .clang-format file exists
         prepend_args = { "--style={BasedOnStyle: LLVM, IndentWidth: 4}" },
       },
     },
     format_on_save = {
-      timeout_ms = 500,
+      timeout_ms = 3000, -- 3 seconds instead of 500ms
+      lsp_format = "fallback",
       lsp_fallback = true,
     },
   },

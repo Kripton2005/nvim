@@ -1,7 +1,7 @@
 return {
   -- List all the themes you like so Lazy installs them
   { "folke/tokyonight.nvim" },
-  { "catppuccin/nvim", name = "catppuccin" },
+  { "catppuccin/nvim",      name = "catppuccin" },
 
   -- The one you actually want to USE
   {
